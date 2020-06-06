@@ -1,0 +1,22 @@
+{
+  "name": "wirenboard-module-ebus",
+  "version": "1.3.0",
+  "description": "Module to control ebus data",
+  "main": "./wb-rules-modules/ebus.js",
+  "keywords": [
+    "wirenboard",
+    "wb",
+    "module",
+    "ebus",
+    "fullhouse"
+  ],
+  "author": "FullHouse <support@fullhouse-online.ru>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullhouse-lab/wirenboard-module-ebus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fullhouse-lab/wirenboard-module-ebus/issues/"
+  },
+  "license": "ISC"
+}
