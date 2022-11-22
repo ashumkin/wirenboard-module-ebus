@@ -87,7 +87,7 @@ function createDevice(config) {
 	Object.keys(config.parameters).forEach(function (item) {
 		var newControl = {};
 
-		newControl.readonly = false;
+		newControl.readonly = config.parameters[item].readonly || false;
 
 		newControl.type = config.parameters[item].type;
 		if (newControl.type === "range") {
