@@ -1,5 +1,5 @@
 var MODULE_NAME 		= "ebus";
-var MODULE_VERSION  = "1.3.0";
+var MODULE_VERSION  = "1.3.1";
 
 exports.start = function(config) {
 	if (!validateConfig(config)) return;
@@ -19,8 +19,8 @@ exports.start = function(config) {
 		createRule_changeParameter(config.id, item, topicsMap[item].ebus);
 	});
 
-	//  get data from ebus every 10 sec  //
-	ebusd_getData_interval(topicsMap, 10000);
+	//  get data from ebus every 30 sec  //
+	ebusd_getData_interval(topicsMap, 30000);
 
   log(config.id + ": Started (" + MODULE_NAME + " ver. " + MODULE_VERSION + ")");
 };
@@ -126,6 +126,7 @@ function getTopicsMap(config) {
 			newTopicBridge.readonly = true;
 		}
 
+		newTopicBridge.convert = param.convert
 		topicsMap[item] = newTopicBridge;
 	});
 
@@ -160,7 +161,8 @@ function getProxyTasks(topicsMap)
 		tasks.push('{'
 			+ '"task": "add",'
 			+ '"from": "' + topicsMap[item].ebus + '",'
-			+ '"to": "' + topicsMap[item].wb + '"'
+			+ '"to": "' + topicsMap[item].wb + '",'
+			+ '"convert": ' + (topicsMap[item].convert ? JSON.stringify(item + "_convert = " + topicsMap[item].convert) : 'null')
 			+ '}');
 	});
 
